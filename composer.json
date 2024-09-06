@@ -1,0 +1,15 @@
+{
+    "name": "amit-bahuguna/result-management",
+    "autoload": {
+        "psr-4": {
+            "AmitBahuguna\\ResultManagement\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "bahguna200125",
+            "email": "amitbahuguna55@gmail.com"
+        }
+    ],
+    "require": {}
+}

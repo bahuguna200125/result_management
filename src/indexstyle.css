@@ -1,0 +1,68 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Header Styling */
+.header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header div {
+    margin: 0 15px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+/* Centered Echo Output */
+.message {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    text-align: center;
+}
+
+/* Home, Login, Register, Logout Buttons */
+#home, #login, #logout, #register {
+    flex: 1;
+    text-align: center;
+}
+
+#home a, #login a, #logout a, #register a {
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+#home a:hover, #login a:hover, #logout a:hover, #register a:hover {
+    background-color: #fff;
+    color: #333;
+    transition: 0.3s;
+}
