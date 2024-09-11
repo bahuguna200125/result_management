@@ -8,42 +8,35 @@
 </head>
 <body>
 <?php 
-
-if (isset($_SESSION['user_email'])) {
-  # code...
-
-  echo  "<div class='message-box success'>ALREADY LOGGED IN </div>";
-  exit;
-  
-}
-
-
-$conn = new mysqli("localhost", "amit", "amit","result_management");
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-$mail=$_POST["mail"];
-?><br>
-<?php
-$password =$_POST["pass"];
- ?><br> 
-<?php
-$sql= "SELECT mail FROM user WHERE mail='{$mail}' AND password='{$password}'";
-$result= $conn->query($sql);
-if ($result->num_rows==1) {
-
 session_start();
-$_SESSION['user_email']=$mail;
-    echo  "<div class='message-box success'>LOGIN SUCCESSFULLY</div>";
+$conn = new mysqli("localhost", "amit", "amit", "result_management");
 
-    header ("location:index.php");
-    exit;
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-else {
-   echo "<div class= 'message-box error'>WRONG CREDENTIALS</div> "; 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $mail = $_POST['mail'];
+    $pass = $_POST['pass'];
+
+    $sql = "SELECT * FROM user WHERE mail='$mail' AND password='$pass'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        $_SESSION['user_email'] = $mail;
+        $_SESSION['user_id'] = $user['user_id']; // Set user_id in session
+        $_SESSION['first_name'] = $user['fname']; // Optionally set first_name
+        $_SESSION['last_name'] = $user['lname']; // Optionally set last_name
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "<div class='message-box error'>Invalid email or password.</div>";
+    }
 }
 ?>
+
+
 </body>
 </html>
 

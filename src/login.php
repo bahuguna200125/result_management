@@ -1,3 +1,4 @@
+<?php include "connection.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +8,6 @@
     <link rel ="stylesheet" href="style.css"/>
 </head>
 <body>
-<?php
-session_start();
-if (isset($_SESSION['user_email'])) {
-  
-    echo  "<div class='message-box success'>ALREADY LOGGED IN </div>";
-    exit;
-    
-  }
-  ?>
 <form method="post" action="loginaction.php" id="form2">
 <label for="mail"><h4>ENTER YOUR MAIL ID</h4> </label>
        <input type="email" id="mail" name="mail" placeholder="@gmail.com" value=""><br>

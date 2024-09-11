@@ -35,7 +35,7 @@
     <td>100</td>
     <td><input type="number" name="che" value=""></td>
 </tr>
-<tr>
+<!-- <tr>
     <td>TOTAL MARKS</td>
     <td>500</td>
     <td></td>
@@ -50,13 +50,33 @@
 <tr>
     <td>PASS/FAIL</td>
     <td>PASS WITH GRACE</td>
-    <td></td>
+    <td></td> -->
 
-</tr>
+<!-- </tr> -->
 <tr>
     <td></td>
-    <td>USER ID</td>
-    <td> <input type="number" id="user" name="user" value=""></td> 
+    <td>USER MAIL </td>
+    <td> <lable for ="user_mail">SELECT MAIL</lable> 
+    <select name="user_id" id="user_mail">
+
+    <?php $sql2 = "SELECT mail, user_id FROM user WHERE user.admin!=1 AND NOT EXISTS (SELECT * FROM user_result WHERE user.user_id=user_result.user_id )";
+            $result = $conn->query($sql2); 
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $email = $row['mail'];
+                    $user_id = $row['user_id']; 
+                    //echo $email;
+                    //echo $user_id;
+                    echo "<option value='{$user_id}'>{$email}</option>";
+                
+                }        
+            }
+
+            ?>
+
+
+    </select>
+ </td> 
 </tr>
 <tr>
     <td></td>

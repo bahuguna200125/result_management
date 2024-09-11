@@ -1,3 +1,4 @@
+/* General Reset and Body Styling */
 * {
     margin: 0;
     padding: 0;
@@ -5,85 +6,94 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f7;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* Container for Forms */
 form {
-    background-color: #fff;
+    background-color: white;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
 }
 
-form h4 {
-    margin-bottom: 5px;
+/* Heading Styling */
+h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
     color: #333;
+    text-align: left;
 }
 
+/* Input Fields */
 input[type="text"],
 input[type="email"],
-input[type="number"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
     width: 100%;
     padding: 10px;
-    margin: 10px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: #f0f4f7;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Input Focus Effect */
+input:focus {
+    border-color: #3498db;
     outline: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="password"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
+/* Submit Button Styling */
 input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+    background-color: #3498db;
     color: white;
-    font-size: 16px;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    width: 100%;
     transition: background-color 0.3s ease;
 }
 
+/* Submit Button Hover */
 input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-label {
-    margin-bottom: 10px;
-    display: block;
-    font-weight: bold;
-    color: #333;
+    background-color: #2980b9;
 }
 
-#form2 {
-    width: 100%;
-}
-
-#fname_info,
-#lname_info,
-#mail_info,
-#phone_info,
-#cpass_info,
-#conpass_info,
-#samepass_info {
-    color: red;
+/* Message Box (for Login Error or Success) */
+.message-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
     font-size: 14px;
-    margin-top: -15px;
+    font-weight: bold;
 }
 
+.message-box.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.message-box.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+    }
+}

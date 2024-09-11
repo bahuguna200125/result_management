@@ -1,3 +1,4 @@
+<?php include "connection.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,6 @@
 </head>
 <body>
 <?php
-
-$conn = new mysqli("localhost", "amit", "amit","result_management");
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 if($_POST['hin']<0||$_POST['hin']>100){
    echo "Wrong Input in Hindi";
 exit;
@@ -37,7 +33,7 @@ if($_POST['che']<0||$_POST['che']>100){
 exit;
 }
 ?>
-    <div id="result" >
+ <div id="result">
 <table>
         <tr>
            
@@ -98,9 +94,10 @@ echo $chemistry;
 <td>TOTAL MARKS</td>
 <td>500</td>
 <td> <b><?php
- echo totalmarks($_POST);
-$total=totalmarks($_POST);
+  
 
+$total=totalmarks($_POST);
+echo $total;
 
 
  function totalmarks($arrayofsub){
@@ -114,13 +111,14 @@ $total=totalmarks($_POST);
     
     <td><b>
 <?php
- percentage($total);
-function percentage($totalmarks){
 
-    echo ($totalmarks/500)*100 ;
+     $percent = percentage($total);
+     echo $percent;
 
-    
-}?>%</b>
+     function percentage($totalmarks) {
+         return ($totalmarks / 500) * 100;
+     }
+    ?>
 </td>
 </tr>
 <tr>
@@ -140,17 +138,20 @@ foreach ($subjects as $subject) {
         $fail_sub_marks = $_POST[$subject];
     }
 }
+$result_status = ""; 
 
 if ($fail) {
     if ($total_fail_sub == 1 && $fail_sub_marks >= 25) {
-        echo "YOU'RE PASS WITH GRACE";
+        $result_status = "PASS WITH GRACE";
+        echo $result_status;
     } else {
-        echo "YOU'RE FAIL";
+        $result_status = "FAIL";
+        echo $result_status;
     }
 } else {
-    echo "YOU'RE PASS";
+    $result_status = "PASS";
+    echo $result_status;
 }
-
 ?>
 </td>
 </tr>
@@ -158,15 +159,45 @@ if ($fail) {
 <tr>
 <td></td>
 <td>USER ID</td>
-<<td><b><?php
-$id= $_POST['user'];
-echo $id;
+<td><b><?php
+$user_id= $_POST['user_id'];
+echo $user_id;
 
 ?></b><br></td> 
 </tr> 
 <?php
-$sql= "INSERT INTO user_result(`user_id` ,`hindi`, `english`, `maths`,`physics`,`chemistry`) VALUES ('{$id}','{$hindi}','{$english}','{$maths}','{$physics}','{$chemistry}')";
-$conn->query($sql);
+
+$result_action="";
+
+if (isset($_POST["result_action"])) {
+
+$result_action=$_POST["result_action"];
+
+}
+
+
+
+if ($result_action=="edit") {
+
+   $user_id = $_POST ["user_id"];
+ $sql = "UPDATE result_management.user_result  
+ SET hindi='{$hindi}', english='{$english}', maths='{$maths}', physics='{$physics}', 
+ chemistry='{$chemistry}' WHERE user_id =$user_id";
+
+echo $sql;
+
+ $conn->query($sql);
+}
+else{
+
+
+
+    $sql = "INSERT INTO  result_management.user_result (user_id, hindi, english, maths, physics, chemistry ) 
+    VALUES ( '{$user_id}', '{$hindi}', '{$english}', '{$maths}', '{$physics}', '{$chemistry}')";
+    $conn->query($sql);
+    
+}    
+    
 
 ?>
     </table>
@@ -174,7 +205,6 @@ $conn->query($sql);
 
 </body>
 </html>
-
 
 
 
