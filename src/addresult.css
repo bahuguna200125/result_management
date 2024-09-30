@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -130,7 +129,6 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-  
 }
 
 .admin-section h3 {
@@ -215,7 +213,19 @@ button:hover {
     
 }
 
+/* For Add Result Section */
+.add-result h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
 
+/* For Edit Result Section */
+.edit-result h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
 
 .admin-section form label {
     display: block;

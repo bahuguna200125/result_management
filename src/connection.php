@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $conn = new mysqli("localhost", "amit", "amit", "result_management");
 
 if ($conn->connect_error) {

@@ -1,4 +1,5 @@
 <?php include "connection.php"; ?>
+<?php include "header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,6 +166,7 @@ echo $user_id;
 
 ?></b><br></td> 
 </tr> 
+
 <?php
 
 $result_action="";
@@ -175,7 +177,9 @@ $result_action=$_POST["result_action"];
 
 }
 
-
+?>
+<h2>UPDATED RESULT</h2>
+<?php
 
 if ($result_action=="edit") {
 
@@ -184,20 +188,23 @@ if ($result_action=="edit") {
  SET hindi='{$hindi}', english='{$english}', maths='{$maths}', physics='{$physics}', 
  chemistry='{$chemistry}' WHERE user_id =$user_id";
 
-echo $sql;
+
 
  $conn->query($sql);
 }
 else{
 
+$sql2 ="SELECT user_id FROM user_result WHERE user_id={$user_id} ";
+$result=$conn->query($sql2);
 
+if ($result->num_rows == 0) {
 
     $sql = "INSERT INTO  result_management.user_result (user_id, hindi, english, maths, physics, chemistry ) 
     VALUES ( '{$user_id}', '{$hindi}', '{$english}', '{$maths}', '{$physics}', '{$chemistry}')";
     $conn->query($sql);
     
 }    
-    
+} 
 
 ?>
     </table>

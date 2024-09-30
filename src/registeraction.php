@@ -1,3 +1,4 @@
+<?php include("connection.php")?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +8,7 @@
   <link rel ="stylesheet" href="actionstyle.css"/>
 </head>
 <body>
-  
-
-<?php 
-
-$conn = new mysqli("localhost", "amit", "amit","result_management");
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+  <?php 
 $firstname=$_POST["fname"];
 ?>
 <br>
@@ -26,7 +20,6 @@ if ($_POST["fname"]=="") {
 ?><br>
 <?php 
 $lastname=$_POST["lname"];
-// echo $lastname;
 ?><br>
 <?php
 if ($_POST["lname"]=="") {
@@ -76,14 +69,37 @@ if ($confirmpass=="") {
  if ($pass!=$confirmpass) {
     echo "<div class='message-box warning'>PLEASE ENTER SAME PASSWORD</div>";
  }
+
+
 $sql2= "SELECT mail FROM user WHERE mail='{$mail}' ";
 $result= $conn->query($sql2);
-if ($result->num_rows>=1) {
-  echo "<div class='message-box error'>USER ALREADY EXIST</div>";
-  exit;
+
+
+$register_action="";
+
+if (isset($_POST["register_action"])) {
+
+$register_action=$_POST["register_action"];
+
 }
+
+
+
+if ($register_action=="edit") {
+
+   $user_id = $_POST ["user_id"];
+ $sql = "UPDATE result_management.user
+ SET fname='{$firstname}', lname='{$lastname}', mail='{$mail}', phone_no='{$mobile_no}', 
+ password ='{$pass}' WHERE user_id =$user_id";
+ 
+$conn->query($sql);
+header("location:index.php");
+}
+
+
+else{
   $sql= "INSERT INTO user (`fname` ,`lname`,`mail`,`phone_no` ,`password`) VALUES ('{$firstname}','{$lastname}','{$mail}','{$mobile_no}','{$pass}')";
- $result= $conn->query($sql);
+ $result= $conn->query($sql);}
 if ($result) {
    echo  "<div class='message-box success'>REGISTRATION SUCCESSFULLY <a href='login.php'>LOGIN<a/></div> ";
 }
@@ -92,5 +108,6 @@ else {
 }
 
 ?>
+
 </body>
 </html>
