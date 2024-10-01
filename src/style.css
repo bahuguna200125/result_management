@@ -55,7 +55,7 @@ input:focus {
 
 /* Submit Button Styling */
 input[type="submit"] {
-    background-color: #3498db;
+    background-color: #34495e;
     color: white;
     border: none;
     padding: 12px;
@@ -68,7 +68,7 @@ input[type="submit"] {
 
 /* Submit Button Hover */
 input[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #182d3b;
 }
 
 /* Message Box (for Login Error or Success) */

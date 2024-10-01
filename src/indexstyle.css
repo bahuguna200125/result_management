@@ -68,7 +68,7 @@ body {
 
 .container a {
     display: inline-block;
-    background-color: #3498db;
+    background-color: #34495e;
     color: white;
     text-decoration: none;
     padding: 12px 20px;
@@ -79,7 +79,7 @@ body {
 }
 
 .container a:hover {
-    background-color: #2980b9;
+    background-color: #182d3b;
 }
 
 /* Message Box */
@@ -233,7 +233,7 @@ button:hover {
 }
 
 .admin-section form input[type="submit"] {
-    background-color: #3498db;
+    background-color: #34495e;
     color: white;
     border: none;
     cursor: pointer;
@@ -241,5 +241,5 @@ button:hover {
 }
 
 .admin-section form input[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #34495e;
 }

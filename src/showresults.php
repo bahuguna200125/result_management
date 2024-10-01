@@ -10,12 +10,19 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="manageusers.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Show User Results </title>
 </head>
 <body>
+    <ul class="breadcrumb">
+        <li><a href= "index.php">HOME</a></li>
+        <li><a href="showresults.php">SHOW RESULT</a></li>
+
+    </ul>
+
     <?php
         $user_query = "SELECT user_id, fname, lname, mail, phone_no FROM user WHERE admin != 1 AND user_id IN (SELECT user_id FROM user_result)";
         $user = $conn->query($user_query);

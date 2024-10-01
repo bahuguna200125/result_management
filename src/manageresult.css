@@ -1,0 +1,112 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Table styling */
+table {
+    width: 70%; /* Adjust table width */
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table header */
+table th {
+    background-color: #34495e;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Table data cells */
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Hover effect for table rows */
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Input field styling within table */
+table input[type="number"],
+table input[type="text"] {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Input fields style consistency */
+table input[type="number"] {
+    text-align: center; /* Center-align numbers */
+}
+
+/* Submit button styling */
+#btn {
+    background-color: #34495e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#btn:hover {
+    background-color: #283c52;
+}
+
+/* Special styling for bold data in table */
+table td b {
+    color: #0d0d0e;
+}
+
+/* Center-align certain table rows */
+table td[colspan] {
+    text-align: center;
+}
+
+/* Text styling for result status */
+td {
+    text-transform: uppercase;
+}
+
+/* No result message */
+p {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+}
+
+/* Table heading for both pages */
+h2 {
+    text-align: center;
+    color: #34495e;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Ensures result tables and input tables are aligned and styled consistently */
+#result table, .result-table {
+    margin: 0 auto;
+}

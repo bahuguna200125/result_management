@@ -190,7 +190,10 @@ if ($result_action=="edit") {
 
 
 
+
  $conn->query($sql);
+  header("location:viewresult.php?user_id={$user_id}");
+  exit;
 }
 else{
 

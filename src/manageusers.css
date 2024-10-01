@@ -1,0 +1,74 @@
+/* General page styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Heading styling */
+h2 {
+
+    font-size: 24px;
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
+   
+   
+}
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table header */
+table th {
+    background-color: #34495e;
+    color: white;
+    font-weight: bold;
+}
+
+/* Table row hover effect */
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action links */
+table a {
+    color: #34495e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+/* Page header styling */
+h2 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* No result message */
+p {
+    font-size: 18px;
+    color: #666;
+}
