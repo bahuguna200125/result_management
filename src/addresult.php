@@ -10,7 +10,14 @@
 </head>
 <body>
 <?php include("header.php")?>
+<div class="breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="addresult.php">Add Result</a></li>
+        </ul>
+    </div>
 
+<div class="addresult">
 <?php
     $admin = 0;
     if (isset($_SESSION['user_email'])) {
@@ -36,5 +43,6 @@
                     <?php include "result.php"; ?>
                 </div>
 <?php } ?>
+</div>
 </body>
 </html>

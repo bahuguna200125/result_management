@@ -17,6 +17,13 @@
     <title>User Details</title>
 </head>
 <body>
+<div class="breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="users.php">Users</a></li>
+        </ul>
+    </div>
+    <div class="users">
     <?php
         // Fetch user details from the database
         $user_query = "SELECT user_id, fname, lname, mail, phone_no FROM user";
@@ -43,5 +50,6 @@
             echo "<p>No results available.</p>";
         }
     ?>
+    </div>
 </body>
 </html>

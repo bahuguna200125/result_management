@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
+<div class="breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="users.php">Users</a></li>
+            <li><a href="edit_user.php">Edit User</a></li>
+        </ul>
+    </div>
 <?php
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
@@ -59,6 +65,7 @@ if (isset($_GET['user_id'])) {
     echo "<p>No user selected.</p>";
 }
 ?>
+
 
 </body>
 </html>

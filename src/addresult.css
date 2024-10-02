@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 
-body {
+.add-result {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f6f9;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+   
 }
 
 .header {
@@ -22,8 +22,6 @@ body {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    top: 0;
-    left: 0;
     z-index: 1000;
 }
 
@@ -56,7 +54,7 @@ body {
     text-align: center;
     max-width: 400px;
     width: 100%;
-    margin-top: 150px; /* To adjust for the fixed header */
+   
 }
 
 .container h2 {
@@ -128,7 +126,8 @@ button:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 180px;
+    margin-left: 300px;
 }
 
 .admin-section h3 {

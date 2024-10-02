@@ -9,7 +9,14 @@
 <body>
     <?php include "connection.php"; ?>
     <?php include "header.php"; ?>
-
+    <div class="breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="showresults.php">Show Result</a></li>
+            <li><a href="editresults.php">Edit Result</a></li>
+        </ul>
+    </div>
+    <div class="result">
     <?php
     if (isset($_GET['user_id'])) {
         $user_id = (int)$_GET['user_id']; // Sanitize user_id
@@ -18,7 +25,7 @@
         $result = $conn->query($result_query);
 
         if ($result->num_rows > 0) {
-            echo "<h2>Your Results:</h2>";
+            echo "<h2>Edit Result:</h2>";
             while ($row = $result->fetch_assoc()) {
     ?>
                 <form method="post" action="resultaction.php">
@@ -87,5 +94,6 @@
         echo "<p>No user selected.</p>";
     }
     ?>
+    </div>
 </body>
 </html>

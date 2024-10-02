@@ -10,7 +10,14 @@
    <link rel="stylesheet" href="manageresult.css">
 </head>
 <body>
-
+<div class="breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="showresults.php">Show Result</a></li>
+            <li><a href="viewresults.php">View Result</a></li>
+        </ul>
+    </div>
+<div class="result">
 <?php
 if (isset($_GET['user_id'])) {
     $user_id = (int)$_GET['user_id'];
@@ -19,6 +26,7 @@ if (isset($_GET['user_id'])) {
     echo "<p>No user selected.</p>";
 }
 ?>
+</div>
     
     </body>
 </html>

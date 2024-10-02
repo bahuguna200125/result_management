@@ -8,7 +8,7 @@ function showresult($user_id ,$conn){
     $result = $conn->query($result_query);
 
     if ($result->num_rows > 0) {
-        echo "<h2>Your Results:</h2>";
+        echo "<h2>Your Result:</h2>";
         while ($row = $result->fetch_assoc()) {
 ?>
            

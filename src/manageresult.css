@@ -1,9 +1,9 @@
 /* General body styling */
-body {
+.result {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@ body {
 
 /* Table styling */
 table {
-    width: 70%; /* Adjust table width */
+    width: 80%; /* Adjust table width */
     margin: 20px auto;
     border-collapse: collapse;
     background-color: #fff;
@@ -102,8 +102,8 @@ h2 {
     text-align: center;
     color: #34495e;
     font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin-top: 70px;
+    margin-bottom: 0px;
 }
 
 /* Ensures result tables and input tables are aligned and styled consistently */

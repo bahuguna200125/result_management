@@ -17,11 +17,15 @@
     <title> Show User Results </title>
 </head>
 <body>
-    <ul class="breadcrumb">
-        <li><a href= "index.php">HOME</a></li>
-        <li><a href="showresults.php">SHOW RESULT</a></li>
+<div class="container">
+    <div class="breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="showresults.php">Show Result</a></li>
+        </ul>
+    </div>
 
-    </ul>
+    <div class="result" >
 
     <?php
         $user_query = "SELECT user_id, fname, lname, mail, phone_no FROM user WHERE admin != 1 AND user_id IN (SELECT user_id FROM user_result)";
@@ -48,5 +52,7 @@
             echo "<p>No results available.</p>";
         }
     ?>
+    </div>
+    </div>
 </body>
 </html>
