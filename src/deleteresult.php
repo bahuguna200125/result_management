@@ -1,4 +1,4 @@
-<?php include("connection.php")?>
+<?php require "controller/user_controller.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +14,8 @@
 
   
  
- $result= "DELETE FROM user_result WHERE user_id=$userid;";
- $delete2 = $conn->query($result);
+  $controller = new UserController();
+  $controller-> delete_user_result ($userid);
 
 
  header("location:showresults.php");

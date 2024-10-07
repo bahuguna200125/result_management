@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="manageresult.css"> 
 </head>
 <body>
-    <?php include "connection.php"; ?>
-    <?php include "header.php"; ?>
+  
+    <?php include "header.php";
+    require "controller/user_controller.php";?>
+     
+
     <div class="breadcrumb">
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
@@ -21,12 +24,21 @@
     if (isset($_GET['user_id'])) {
         $user_id = (int)$_GET['user_id']; // Sanitize user_id
 
-        $result_query = "SELECT * FROM user_result WHERE user_id = $user_id";
-        $result = $conn->query($result_query);
-
-        if ($result->num_rows > 0) {
+     $controller= new UserController();
+     $user_result = $controller->get_user_result_by_user_id($user_id);
+     if ($user_result){
+        $id = $user_result->get_id();
+        $user_id= $user_result->get_user()->get_user_id();
+        $email = $user_result->get_user()->get_email();
+        $hindi = $user_result->getSubjectMark("hindi");
+        $english = $user_result->getSubjectMark("english");
+        $maths = $user_result->getSubjectMark("maths"); 
+        $physics = $user_result->getSubjectMark("physics");
+        $chemistry = $user_result->getSubjectMark("chemistry");
+     }
+      
             echo "<h2>Edit Result:</h2>";
-            while ($row = $result->fetch_assoc()) {
+           
     ?>
                 <form method="post" action="resultaction.php">
                     <input type="hidden" name="result_action" value="edit">
@@ -41,39 +53,36 @@
                             <tr>
                                 <td>Hindi</td>
                                 <td>100</td>
-                                <td><input type="number" name="hin" value="<?php echo $row['hindi']; ?>"></td>
+                                <td><input type="number" name="hin" value="<?php echo $hindi; ?>"></td>
                             </tr>
                             <tr>
                                 <td>English</td>
                                 <td>100</td>
-                                <td><input type="number" name="eng" value="<?php echo $row['english']; ?>"></td>
+                                <td><input type="number" name="eng" value="<?php echo $english; ?>"></td>
                             </tr>
                             <tr>
                                 <td>Maths</td>
                                 <td>100</td>
-                                <td><input type="number" name="math" value="<?php echo $row['maths']; ?>"></td>
+                                <td><input type="number" name="math" value="<?php echo $maths; ?>"></td>
                             </tr>
                             <tr>
                                 <td>Physics</td>
                                 <td>100</td>
-                                <td><input type="number" name="phy" value="<?php echo $row['physics']; ?>"></td>
+                                <td><input type="number" name="phy" value="<?php echo $physics; ?>"></td>
                             </tr>
                             <tr>
                                 <td>Chemistry</td>
                                 <td>100</td>
-                                <td><input type="number" name="che" value="<?php echo $row['chemistry']; ?>"></td>
+                                <td><input type="number" name="che" value="<?php echo $chemistry; ?>"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>USER MAIL</td>
                                 <td>
                                     <?php
-                                    $sql2 = "SELECT mail FROM user WHERE user_id = $user_id";
-                                    $email_result = $conn->query($sql2);
-                                    if ($email_result->num_rows > 0) {
-                                        $email_row = $email_result->fetch_assoc();
-                                        echo $email_row['mail'];
-                                    }
+                                   
+                                        echo $email;
+                                    
                                     ?>
                                 </td>
                             </tr>
@@ -87,12 +96,12 @@
                 </form>
     <?php
             }
-        } else {
+         else {
             echo "<p>No results available for this user.</p>";
         }
-    } else {
-        echo "<p>No user selected.</p>";
-    }
+    // } else {
+    //     echo "<p>No user selected.</p>";
+    
     ?>
     </div>
 </body>

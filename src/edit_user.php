@@ -1,5 +1,6 @@
-<?php include "connection.php"; ?>
-<?php include "header.php"; ?>
+<?php
+ include "header.php"; 
+require "controller/user_controller.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,51 +20,60 @@
 <?php
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
-    $user_query = "SELECT * FROM user WHERE user_id = $user_id";
-    $user = $conn->query($user_query);
 
-    if ($user->num_rows > 0) {
-        $row = $user->fetch_assoc();
-        $fname = $row['fname'];
-        $lname = $row['lname'];
-        $email = $row['mail'];
-        $phone_no = $row['phone_no'];
-        $pass = $row['password'];
-        ?>
+$controller = new UserController();
 
-        <h2>Update Details</h2>
-        <form method="post" action="registeraction.php">
-            <input type="hidden" name="register_action" value="edit">
-            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br><br><br><br>
+$user = $controller->get_user_by_id($user_id);
 
-            <label for="fname"><h4>First Name</h4></label>
-            <input type="text" id="fname" name="fname" placeholder="First Name" value="<?php echo $fname; ?>"><br>
 
-            <label for="lname"><h4>Last Name</h4></label>
-            <input type="text" id="lname" name="lname" placeholder="Last Name" value="<?php echo $lname; ?>"><br>
+if ($user){
+    $email = $user->get_email();
+    $fname = $user->get_first_name();
+    $lname = $user->get_last_name();
+    $pass = $user->get_password();
+    $phone_no = $user->get_phone_no();
+?>
 
-            <label for="mail"><h4>Email</h4></label>
-            <input type="email" id="mail" name="mail" placeholder="Email" value="<?php echo $email; ?>"><br>
+    <h2>Update Details</h2>
+    <form method="post" action="registeraction.php">
+        <input type="hidden" name="register_action" value="edit">
+        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"><br><br><br><br>
 
-            <label for="phone"><h4>Phone Number</h4></label>
-            <input type="text" id="phone" name="phone" placeholder="Phone Number" value="<?php echo $phone_no; ?>"><br>
+        <label for="fname"><h4>First Name</h4></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" value="<?php echo $fname; ?>"><br>
 
-            <label for="cpass"><h4>Password</h4></label>
-            <input type="password" id="cpass" name="cpass" placeholder="Password" value="<?php echo $pass; ?>"><br>
+        <label for="lname"><h4>Last Name</h4></label>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" value="<?php echo $lname; ?>"><br>
 
-            <label for="conpass"><h4>Confirm Password</h4></label>
-            <input type="password" id="conpass" name="conpass" placeholder="Confirm Password" value="<?php echo $pass; ?>"><br>
+        <label for="mail"><h4>Email</h4></label>
+        <input type="email" id="mail" name="mail" placeholder="Email" value="<?php echo $email; ?>"><br>
 
-            <input type="submit" id="submit" name="submit" value="Update">
-        </form>
+        <label for="phone"><h4>Phone Number</h4></label>
+        <input type="text" id="phone" name="phone" placeholder="Phone Number" value="<?php echo $phone_no; ?>"><br>
+
+        <label for="cpass"><h4>Password</h4></label>
+        <input type="password" id="cpass" name="cpass" placeholder="Password" value="<?php echo $pass; ?>"><br>
+
+        <label for="conpass"><h4>Confirm Password</h4></label>
+        <input type="password" id="conpass" name="conpass" placeholder="Confirm Password" value="<?php echo $pass; ?>"><br>
+
+        <input type="submit" id="submit" name="submit" value="Update">
+    </form>
+    <?php
+}
+else {
+    echo "<p>User not found.</p>";
+}
+
+?>
+   
+       
 
         <?php
     } else {
         echo "<p>User not found.</p>";
-    }
-} else {
-    echo "<p>No user selected.</p>";
-}
+    } 
+
 ?>
 
 

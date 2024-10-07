@@ -1,9 +1,9 @@
 <?php 
-include "connection.php"; 
  require "userresult.php";
+ require "controller/user_controller.php";?>
 
 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,21 +18,22 @@ include "connection.php";
     $admin = 0;
     $user_logged_in = false;
     $current_page = basename($_SERVER['PHP_SELF']);
-
-    // Check if user is logged in
     if (isset($_SESSION['user_email'])) {
         $user_email = $_SESSION['user_email'];
-        $sql = "SELECT * FROM user WHERE mail='{$user_email}'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $first_name = $row['fname'];
-                $admin = $row['admin'];
-                $user_id = $row['user_id']; // Make sure user_id is set only when the user is logged in
-                $user_logged_in = true;
-            }
+        $controller = new UserController();
+        $user = $controller->get_user_by_mail ($user_email);
+        if ($user){
+            $first_name = $user->get_first_name();
+            $admin = $user->get_admin();
+            $user_id = $user->get_user_id(); 
+            $user_logged_in = true;
         }
-    }
+        else {
+            echo "User Not Found"."<br>";
+        }
+        
+            }
+     
     ?>
 
     <div class="header">

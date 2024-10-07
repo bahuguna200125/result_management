@@ -35,24 +35,6 @@
     <td>100</td>
     <td><input type="number" name="che" value=""></td>
 </tr>
-<!-- <tr>
-    <td>TOTAL MARKS</td>
-    <td>500</td>
-    <td></td>
-</tr>
-
-<tr>
-    <td>PERCENTAGE</td>
-    <td>%</td>
-    <td></td>
-
-</tr>
-<tr>
-    <td>PASS/FAIL</td>
-    <td>PASS WITH GRACE</td>
-    <td></td> -->
-
-<!-- </tr> -->
 <tr>
     <td></td>
     <td>USER MAIL </td>

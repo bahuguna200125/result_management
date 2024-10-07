@@ -7,7 +7,14 @@
 </head>
 <body>
 <?php
-$user_logged_in = true;
+if (isset($_SESSION['user_email'])) {
+    $user_logged_in = true;
+}
+else {
+    $user_logged_in =false;
+}
+
+
 ?>
 <div class="header">
         <div id="home">

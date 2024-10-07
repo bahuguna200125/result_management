@@ -1,4 +1,6 @@
-<?php include("connection.php")?>
+<?php require_once("controller/user_controller.php");
+include("header.php")?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,8 +73,7 @@ if ($confirmpass=="") {
  }
 
 
-$sql2= "SELECT mail FROM user WHERE mail='{$mail}' ";
-$result= $conn->query($sql2);
+
 
 
 $register_action="";
@@ -80,6 +81,16 @@ $register_action="";
 if (isset($_POST["register_action"])) {
 
 $register_action=$_POST["register_action"];
+
+}
+$controller = new UserController();
+$user = $controller->get_user_by_mail ($mail);
+if ($register_action=="register" && $user) {
+
+ echo "USER ALREADY EXIST";
+   
+
+   exit;
 
 }
 
@@ -93,7 +104,7 @@ if ($register_action=="edit") {
  password ='{$pass}' WHERE user_id =$user_id";
  
 $conn->query($sql);
-header("location:index.php");
+header("location:users.php");
 }
 
 

@@ -13,5 +13,5 @@ echo "YOU ARE SUCCESSFULLY LOGGED OUT <a href='login.php'>LOGIN<a/> or <a href='
 header ("location:index.php");
 exit;
 ?>
-</body>
+ </body>
 </html>

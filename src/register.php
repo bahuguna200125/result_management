@@ -1,3 +1,4 @@
+<?php include("header.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
 <body>
                                
 <form method="post" action="registeraction.php" id="form2">
+<input type="hidden" name="register_action" value="register">
         <label for="fname" ><h4>FIRST NAME</h4></label>
         <input type="text" id="fname" name="fname" placeholder="FIRST NAME" value=""><br>
         <div id="fname_info"></div>
