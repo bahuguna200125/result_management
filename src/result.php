@@ -1,4 +1,4 @@
- <form method="post" action="resultaction.php">
+ <form method="post" action="resultaction.php" id="addresult" onsubmit="return validateResultForm()">
     <div id="result">
     <table>
         <tr>
@@ -12,28 +12,35 @@
         <tr>
 <td>Hindi</td>
 <td>100</td>
-<td><input type="number" name="hin" value=""></td>
+<td><input type="number"  id= "hin"  name="hin" value=""> <div id="hindi_info"></div></td>
+
 
 </tr>
 <tr>
     <td>English</td>
     <td>100</td>
-    <td><input type="number" name="eng" value=""></td>
+    <td><input type="number" id="eng" name="eng" value=""> <div id="english_info"></div> </td>
+    
 </tr>
 <tr>
     <td>Maths</td>
     <td>100</td>
-    <td><input type="number" name="math" value=""></td>
+    <td><input type="number" id="math" name="math" value="">
+    <div id="maths_info"></div> </td>
+   
 </tr>
 <tr>
     <td>Physics</td>
     <td>100</td>
-    <td><input type="number" name="phy" value=""></td>
+    <td><input type="number" id="phy" name="phy" value="">    <div id="physics_info"></div> </td>
+ 
+
 </tr>
 <tr>
     <td>Chemistry</td>
     <td>100</td>
-    <td><input type="number" name="che" value=""></td>
+    <td><input type="number" id="che" name="che" value=""> <div id="chemistry_info"></div></td>
+    
 </tr>
 <tr>
     <td></td>
@@ -41,19 +48,17 @@
     <td> <lable for ="user_mail">SELECT MAIL</lable> 
     <select name="user_id" id="user_mail">
 
-    <?php $sql2 = "SELECT mail, user_id FROM user WHERE user.admin!=1 AND NOT EXISTS (SELECT * FROM user_result WHERE user.user_id=user_result.user_id )";
-            $result = $conn->query($sql2); 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $email = $row['mail'];
-                    $user_id = $row['user_id']; 
-                    //echo $email;
-                    //echo $user_id;
-                    echo "<option value='{$user_id}'>{$email}</option>";
-                
-                }        
-            }
+    
+    <?php
+    $controller = new UserController();
+    $users = $controller->add_user_result();
 
+    foreach($users as $user){
+        $email= $user->get_email();
+        $user_id= $user->get_user_id();
+        echo "<option value='{$user_id}'>{$email}</option>";
+
+    }
             ?>
 
 
@@ -63,7 +68,7 @@
 <tr>
     <td></td>
     <td></td>
-    <td> <input type="submit"  id="btn" value="SUBMIT"></td>
+    <td> <input type="submit"  id="btn"   value="SUBMIT"></td>
 
 </tr>
 

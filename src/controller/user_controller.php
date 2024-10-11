@@ -107,5 +107,29 @@ else {
 return false;
 }
 }
+
+
+function add_user_result() {
+
+    $users = array();
+    $sql2 = "SELECT mail, user_id FROM user WHERE user.admin!=1 AND NOT EXISTS (SELECT * FROM user_result WHERE user.user_id=user_result.user_id )";
+    $result = $this-> connection->query($sql2); 
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $email = $row['mail'];
+            if ( isset ($email)){
+     
+ $users[]=  $this->get_user_by_mail($email);
+}
+        }
+
+        return $users;
+
+
+
+}
+
+
+}
 }
 ?>

@@ -51,5 +51,6 @@
                 </div>
 <?php } ?>
 </div>
+<script src="add_result.js"></script>
 </body>
 </html>

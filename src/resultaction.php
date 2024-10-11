@@ -6,11 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="newresult.css">
+    <link rel="stylesheet" href="manageresult.css">
 </head>
 <body>
+<div class="breadcrumb">
+<ul class="breadcrumb">
+    <li><a href="index.php">Home</a></li>
+    <li><a href="addresult.php">Add Result</a></li>
+    <li><a href="resultaction.php">Added Result</a></li>
+</ul>
+</div>
 <?php
-if($_POST['hin']<0||$_POST['hin']>100){
+
+
+if($_POST['hin']<0||$_POST['hin']>100  && is_numeric($_POST['hin'])  ){
    echo "Wrong Input in Hindi";
 exit;
 }
@@ -178,11 +187,13 @@ $result_action=$_POST["result_action"];
 }
 
 ?>
-<h2>UPDATED RESULT</h2>
+
 <?php
 
 if ($result_action=="edit") {
-
+    ?>
+    <h2>UPDATED RESULT</h2>
+<?php
    $user_id = $_POST ["user_id"];
  $sql = "UPDATE result_management.user_result  
  SET hindi='{$hindi}', english='{$english}', maths='{$maths}', physics='{$physics}', 
@@ -196,6 +207,9 @@ if ($result_action=="edit") {
   exit;
 }
 else{
+    ?>
+    <h2>ADDED RESULT</h2>
+    <?php
 
 $sql2 ="SELECT user_id FROM user_result WHERE user_id={$user_id} ";
 $result=$conn->query($sql2);
@@ -205,6 +219,7 @@ if ($result->num_rows == 0) {
     $sql = "INSERT INTO  result_management.user_result (user_id, hindi, english, maths, physics, chemistry ) 
     VALUES ( '{$user_id}', '{$hindi}', '{$english}', '{$maths}', '{$physics}', '{$chemistry}')";
     $conn->query($sql);
+   
     
 }    
 } 

@@ -22,7 +22,7 @@
     <div class="result">
     <?php
     if (isset($_GET['user_id'])) {
-        $user_id = (int)$_GET['user_id']; // Sanitize user_id
+        $user_id = (int)$_GET['user_id']; 
 
      $controller= new UserController();
      $user_result = $controller->get_user_result_by_user_id($user_id);
@@ -99,8 +99,6 @@
          else {
             echo "<p>No results available for this user.</p>";
         }
-    // } else {
-    //     echo "<p>No user selected.</p>";
     
     ?>
     </div>
