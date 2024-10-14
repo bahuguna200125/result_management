@@ -1,4 +1,4 @@
-<?php include "connection.php"; ?>
+<?php require_once("controller/user_controller.php");?>
 <?php include "header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,20 +25,20 @@ exit;
 }
 
  
-if($_POST['eng']<0||$_POST['eng']>100){
+if($_POST['eng']<0||$_POST['eng']>100  && is_numeric($_POST['eng'])){
     echo "Wrong Input in English";  
 exit;
 }
-if($_POST['math']<0||$_POST['math']>100){
+if($_POST['math']<0||$_POST['math']>100  && is_numeric($_POST['math'])){
     echo "Wrong Input in Maths";
  exit;
 
 }
-if($_POST['phy']<0||$_POST['phy']>100){
+if($_POST['phy']<0||$_POST['phy']>100  && is_numeric($_POST['phy'])){
     echo "Wrong Input in Physics";
 exit;
 }
-if($_POST['che']<0||$_POST['che']>100){
+if($_POST['che']<0||$_POST['che']>100  && is_numeric($_POST['che'])){
     echo "Wrong Input in Chemistry";
 exit;
 }
@@ -190,19 +190,26 @@ $result_action=$_POST["result_action"];
 
 <?php
 
+
+$subjects=[
+    new subject("hindi",$hindi),
+    new subject("english",$english),
+    new subject("maths",$maths),
+    new subject("physics",$physics),
+    new subject("chemistry",$chemistry),
+
+];
+
+
 if ($result_action=="edit") {
     ?>
     <h2>UPDATED RESULT</h2>
+
 <?php
-   $user_id = $_POST ["user_id"];
- $sql = "UPDATE result_management.user_result  
- SET hindi='{$hindi}', english='{$english}', maths='{$maths}', physics='{$physics}', 
- chemistry='{$chemistry}' WHERE user_id =$user_id";
 
-
-
-
- $conn->query($sql);
+$controller= new UserController();
+$update_result = $controller->update_user_results($subjects,$user_id);
+ 
   header("location:viewresult.php?user_id={$user_id}");
   exit;
 }
@@ -211,25 +218,16 @@ else{
     <h2>ADDED RESULT</h2>
     <?php
 
-$sql2 ="SELECT user_id FROM user_result WHERE user_id={$user_id} ";
-$result=$conn->query($sql2);
 
-if ($result->num_rows == 0) {
+$controller= new UserController();
+$insert_result = $controller-> insert_user_results($subjects,$user_id);
 
-    $sql = "INSERT INTO  result_management.user_result (user_id, hindi, english, maths, physics, chemistry ) 
-    VALUES ( '{$user_id}', '{$hindi}', '{$english}', '{$maths}', '{$physics}', '{$chemistry}')";
-    $conn->query($sql);
-   
-    
-}    
+
 } 
+
 
 ?>
     </table>
     </div>
-
 </body>
 </html>
-
-
-

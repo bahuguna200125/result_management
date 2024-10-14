@@ -17,6 +17,7 @@
             <li><a href="addresult.php">Add Result</a></li>
         </ul>
     </div>
+    
 
 <div class="addresult">
 <?php

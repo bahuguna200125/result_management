@@ -125,11 +125,77 @@ function add_user_result() {
 
         return $users;
 
+    }
 
+}
+function insert_user_results ($subjects,$user_id){
+
+$sql2 ="SELECT user_id FROM user_result WHERE user_id={$user_id} ";
+$result= $this -> connection->query($sql2);
+
+if ($result->num_rows == 0) {
+
+$marks=[];
+
+    foreach($subjects as $subject){
+        $marks[$subject->get_subject_name()]=$subject->get_subject_marks();
+
+
+    }
+
+    $hindi=$marks["hindi"];
+    $english=$marks["english"];
+    $maths=$marks["maths"];
+    $physics=$marks["physics"];
+    $chemistry=$marks["chemistry"];
+
+    $sql = "INSERT INTO  result_management.user_result (user_id, hindi, english, maths, physics, chemistry ) 
+    VALUES ( '{$user_id}', '{$hindi}', '{$english}', '{$maths}', '{$physics}', '{$chemistry}')";
+    $this -> connection->query($sql);
+   
+}
+
+}
+
+function update_user_results($subjects,$user_id){
+    foreach($subjects as $subject){
+        $marks[$subject->get_subject_name()]=$subject->get_subject_marks();
+
+
+    }
+
+    $hindi=$marks["hindi"];
+    $english=$marks["english"];
+    $maths=$marks["maths"];
+    $physics=$marks["physics"];
+    $chemistry=$marks["chemistry"];
+
+    $sql = "UPDATE result_management.user_result  
+    SET hindi='{$hindi}', english='{$english}', maths='{$maths}', physics='{$physics}', 
+    chemistry='{$chemistry}' WHERE user_id =$user_id";
+   
+   
+   
+   
+    $this -> connection ->query($sql);
+}
+
+function insert_user($user){
+
+$firstname= $user->get_first_name();
+$lastname= $user->get_last_name();
+$mail= $user->get_email();
+$mobile_no=$user->get_phone_no();
+$pass=$user->get_password();
+
+       
+    $sql= "INSERT INTO user (`fname` ,`lname`,`mail`,`phone_no` ,`password`) VALUES ('{$firstname}','{$lastname}','{$mail}','{$mobile_no}','{$pass}')";
+    $result= $this -> connection ->query($sql);
+
+    return $result;
+}
 
 }
 
 
-}
-}
 ?>

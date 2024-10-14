@@ -1,15 +1,21 @@
 
 <?php 
-
 function showresult($user_id ,$conn){
-  
+    $controller= new UserController();
+    $user_result = $controller->get_user_result_by_user_id($user_id);
+    if ($user_result){
+       $id = $user_result->get_id();
+       $user_id= $user_result->get_user()->get_user_id();
+       $email = $user_result->get_user()->get_email();
+       $hindi = $user_result->getSubjectMark("hindi");
+       $english = $user_result->getSubjectMark("english");
+       $maths = $user_result->getSubjectMark("maths"); 
+       $physics = $user_result->getSubjectMark("physics");
+       $chemistry = $user_result->getSubjectMark("chemistry");
 
-    $result_query = "SELECT * FROM user_result WHERE user_id = $user_id";
-    $result = $conn->query($result_query);
 
-    if ($result->num_rows > 0) {
+ 
         echo "<h2>Your Result:</h2>";
-        while ($row = $result->fetch_assoc()) {
 ?>
            
            <table>
@@ -26,7 +32,6 @@ function showresult($user_id ,$conn){
 <td>100</td>
 <td><b><?php
 
- $hindi =$row['hindi'];
  echo $hindi ;
 ?></b><br></td>
 </tr>
@@ -36,7 +41,6 @@ function showresult($user_id ,$conn){
     <td>100</td>
     <td><b><?php
 
-$english =$row['english'];
 echo $english;
 ?><br></td>
 </tr> 
@@ -46,7 +50,7 @@ echo $english;
     <td>Maths</td>
     <td>100</td>
     <td><b><?php
-$maths= $row['maths'];
+
 echo $maths;
 ?></b><br></td>
 </tr>
@@ -55,7 +59,7 @@ echo $maths;
     <td>Physics</td>
     <td>100</td>
     <td><b><?php
- $physics =$row['physics'];
+
 echo $physics;
 ?></b><br></td>
 </tr>
@@ -64,7 +68,7 @@ echo $physics;
     <td>Chemistry</td>
     <td>100</td>
     <td> <b><?php
-$chemistry= $row['chemistry'];
+
 echo $chemistry;
 ?><br></td>
 </tr><br><br>
@@ -73,11 +77,12 @@ echo $chemistry;
 <td>500</td>
 <td> <b><?php
 
- function totalmarks($arrayofsub){
-    return $arrayofsub['hindi']+  $arrayofsub['english'] +  $arrayofsub['maths'] +  $arrayofsub['physics']+ $arrayofsub['chemistry'];
+ function totalmarks($user_result){
+    return $user_result->getSubjectMark("hindi")+  $user_result->getSubjectMark("english")+  $user_result->getSubjectMark("maths") +  $user_result->getSubjectMark("physics")+ $user_result->getSubjectMark("chemistry");
+   
   }
  
-$total=totalmarks($row);
+$total=totalmarks($user_result);
 echo $total;
 
 
@@ -115,10 +120,10 @@ $total_fail_sub = 0;
 $subjects = ['hindi', 'english', 'maths', 'physics', 'chemistry'];
 
 foreach ($subjects as $subject) {
-    if ($row[$subject] < 33) {
+    if ($user_result->getSubjectMark($subject) < 33) {
         $fail = true;
         $total_fail_sub++;
-        $fail_sub_marks = $row[$subject];
+        $fail_sub_marks = $user_result->getSubjectMark($subject);
     }
 }
 $result_status = ""; 
@@ -144,12 +149,9 @@ if ($fail) {
 <td>USER MAIL</td>
 <td><b><?php
   
-  $sql2 = "SELECT mail FROM user WHERE user_id = $user_id";
-  $email_result = $conn->query($sql2);
-  if ($email_result->num_rows > 0) {
-      $email_row = $email_result->fetch_assoc();
-      echo $email_row['mail'];
-  }
+  
+      echo $email;
+  
   
 ?></b><br></td> 
 </tr> 
@@ -161,7 +163,7 @@ if ($fail) {
                 </div>
             </form>
 <?php
-        }
+        
     } else {
         echo "<p>No results available for this user.</p>";
     }

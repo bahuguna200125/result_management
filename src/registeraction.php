@@ -95,8 +95,9 @@ if ($register_action=="register" && $user) {
 }
 
 
-
 if ($register_action=="edit") {
+
+
 
    $user_id = $_POST ["user_id"];
  $sql = "UPDATE result_management.user
@@ -109,8 +110,10 @@ header("location:users.php");
 
 
 else{
-  $sql= "INSERT INTO user (`fname` ,`lname`,`mail`,`phone_no` ,`password`) VALUES ('{$firstname}','{$lastname}','{$mail}','{$mobile_no}','{$pass}')";
- $result= $conn->query($sql);}
+   $user = new User(0,$firstname,$lastname,$mail,$mobile_no,$pass,0);
+
+$result = $controller->insert_user($user);
+}
 if ($result) {
    echo  "<div class='message-box success'>REGISTRATION SUCCESSFULLY <a href='login.php'>LOGIN<a/></div> ";
 }

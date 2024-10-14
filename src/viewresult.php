@@ -1,4 +1,4 @@
-<?php include "connection.php"; ?>
+<?php require_once("controller/user_controller.php");?>
 <?php include "header.php"; ?>
 <?php require"userresult.php"?>;
 
