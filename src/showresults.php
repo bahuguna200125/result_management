@@ -6,7 +6,7 @@
         exit;
     }
     include "header.php"; 
-    include("connection.php"); 
+     require_once("controller/user_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,27 +28,32 @@
     <div class="result" >
 
     <?php
-        $user_query = "SELECT user_id, fname, lname, mail, phone_no FROM user WHERE admin != 1 AND user_id IN (SELECT user_id FROM user_result)";
-        $user = $conn->query($user_query);
-        
-        if ($user->num_rows > 0) {
-            echo "<h2>SHOW USER RESULTS:</h2>";
+       $controller= new UserController();
+       $users = $controller->get_users_with_results();
+       if ($users) {
+       echo "<h2>SHOW USER RESULTS:</h2>";
             echo "<table>";
             echo "<tr><th>USER ID</th><th>FIRST NAME</th><th>LAST NAME</th><th>EMAIL</th><th>PHONE NO</th><th>ACTION</th></tr>";
-            
-            while ($row = $user->fetch_assoc()) {
-                $userid = $row['user_id'];
+            foreach ($users as $user) {
+                $user_id=$user->get_user_id();
+                $fname= $user->get_first_name();
+                $lname= $user->get_last_name();
+                $mail= $user->get_email();
+                $phone_no=$user->get_phone_no();
                 echo "<tr>";
-                echo "<td>{$userid}</td>";
-                echo "<td>{$row['fname']}</td>";
-                echo "<td>{$row['lname']}</td>";
-                echo "<td>{$row['mail']}</td>";
-                echo "<td>{$row['phone_no']}</td>";
-                echo "<td> <a href='viewresult.php?user_id={$userid}'>SHOW</a> <a href='editresult.php?user_id={$userid}'>EDIT</a> <a href='deleteresult.php?user_id={$userid}'>DELETE</a></td>";
+                echo "<td>{$user_id}</td>";
+                echo "<td>{$fname}</td>";
+                echo "<td>{$lname}</td>";
+                echo "<td>{$mail}</td>";
+                echo "<td>{$phone_no}</td>";
+                echo "<td> <a href='viewresult.php?user_id={$user_id}'>SHOW</a> <a href='editresult.php?user_id={$user_id}'>EDIT</a> <a href='deleteresult.php?user_id={$user_id}'>DELETE</a></td>";
+            
                 echo "</tr>";
-            }
+       }
+       
             echo "</table>";
-        } else {
+       
+     } else {
             echo "<p>No results available.</p>";
         }
     ?>

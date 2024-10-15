@@ -194,7 +194,72 @@ $pass=$user->get_password();
 
     return $result;
 }
+function edit_user($user){
+    $user_id=$user->get_user_id();
+    $firstname= $user->get_first_name();
+    $lastname= $user->get_last_name();
+    $mail= $user->get_email();
+    $mobile_no=$user->get_phone_no();
+    $pass=$user->get_password();
+    
+    $sql = "UPDATE result_management.user
+    SET fname='{$firstname}', lname='{$lastname}', mail='{$mail}', phone_no='{$mobile_no}', 
+    password ='{$pass}' WHERE user_id =$user_id";
+    
+    $result=  $this ->connection->query($sql);
+ 
+      return $result;
+    }
 
+ function get_users_with_results(){
+    $users=[];
+
+    $user_query = "SELECT user_id, fname, lname, mail, phone_no FROM user WHERE admin != 1 AND user_id IN (SELECT user_id FROM user_result)";
+    $result =$this->connection->query($user_query);
+    
+    if ($result->num_rows > 0){
+        while ($row = $result->fetch_assoc()) {
+            $user_id = $row['user_id'];
+            $firstname = $row['fname'];
+            $lastname = $row['lname'];
+            $mail = $row['mail']; 
+            $mobile_no = $row['phone_no'];
+           
+         
+
+     
+         $user= new User ( $user_id,$firstname,$lastname,$mail,$mobile_no,"",0);
+      
+               $users[]=$user;
+
+        }
+
+    }
+
+    return $users;
+
+ }
+function get_users(){
+$users=[];
+$user_query = "SELECT user_id, fname, lname, mail, phone_no, admin  FROM user";
+$result = $this ->connection->query($user_query);
+
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+
+        $user_id = $row['user_id'];
+        $firstname = $row['fname'];
+        $lastname = $row['lname'];
+        $mail = $row['mail']; 
+        $mobile_no = $row['phone_no'];
+        $admin= $row['admin'];
+        $user= new User ( $user_id,$firstname,$lastname,$mail,$mobile_no,"",$admin);
+        $users[]=$user;
+}
+}
+return $users;
+}
 }
 
 

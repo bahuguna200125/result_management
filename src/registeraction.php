@@ -96,15 +96,20 @@ if ($register_action=="register" && $user) {
 
 
 if ($register_action=="edit") {
-
-
-
    $user_id = $_POST ["user_id"];
- $sql = "UPDATE result_management.user
- SET fname='{$firstname}', lname='{$lastname}', mail='{$mail}', phone_no='{$mobile_no}', 
- password ='{$pass}' WHERE user_id =$user_id";
- 
-$conn->query($sql);
+
+   $user = new User($user_id,$firstname,$lastname,$mail,$mobile_no,$pass,0);
+
+
+   
+
+   $result = $controller->edit_user($user,);
+   if ($result) {
+      header("location:users.php");
+   }
+   else {
+       echo  "<div class='message-box error'>UPDATE FAILED</div>";
+   }
 header("location:users.php");
 }
 

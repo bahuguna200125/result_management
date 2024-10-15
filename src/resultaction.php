@@ -201,13 +201,13 @@ $subjects=[
 ];
 
 
+
+$controller= new UserController();
 if ($result_action=="edit") {
     ?>
     <h2>UPDATED RESULT</h2>
 
 <?php
-
-$controller= new UserController();
 $update_result = $controller->update_user_results($subjects,$user_id);
  
   header("location:viewresult.php?user_id={$user_id}");
@@ -218,8 +218,6 @@ else{
     <h2>ADDED RESULT</h2>
     <?php
 
-
-$controller= new UserController();
 $insert_result = $controller-> insert_user_results($subjects,$user_id);
 
 

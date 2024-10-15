@@ -6,7 +6,7 @@
         exit;
     }
     include "header.php"; 
-    include("connection.php"); 
+    require_once("controller/user_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,23 +25,24 @@
     </div>
     <div class="users">
     <?php
-        // Fetch user details from the database
-        $user_query = "SELECT user_id, fname, lname, mail, phone_no FROM user";
-        $user = $conn->query($user_query);
-        
-        if ($user->num_rows > 0) {
+       $controller= new UserController();
+       $users = $controller->get_users();
+       if ($users) {
             echo "<h2>USER DETAILS:</h2>";
             echo "<table>";
             echo "<tr><th>USER ID</th><th>FIRST NAME</th><th>LAST NAME</th><th>EMAIL</th><th>PHONE NO</th><th>ACTION</th></tr>";
-            
-            while ($row = $user->fetch_assoc()) {
-                $userid = $row['user_id'];
+            foreach ($users as $user) {
+                $userid=$user->get_user_id();
+                $fname= $user->get_first_name();
+                $lname= $user->get_last_name();
+                $mail= $user->get_email();
+                $phone_no=$user->get_phone_no();
                 echo "<tr>";
                 echo "<td>{$userid}</td>";
-                echo "<td>{$row['fname']}</td>";
-                echo "<td>{$row['lname']}</td>";
-                echo "<td>{$row['mail']}</td>";
-                echo "<td>{$row['phone_no']}</td>";
+                echo "<td>{$fname}</td>";
+                echo "<td>{$lname}</td>";
+                echo "<td>{$mail}</td>";
+                echo "<td>{$phone_no}</td>";
                 echo "<td><a href='edit_user.php?user_id={$userid}'>EDIT</a> <a href='delete.php?user_id={$userid}'>DELETE</a></td>";
                 echo "</tr>";
             }
