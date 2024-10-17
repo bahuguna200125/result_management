@@ -30,48 +30,44 @@ public function getSubjectMark(string $subjectName): float {
     return $this->subjects[$subjectName]->get_subject_marks();
 }
 
-
-
-
-
-
-// function set_user_id($userid){
-//      $this -> user_id= $userid;
-// }
-// function get_hindi(){
-//     return $this ->hindi;
-
-// } 
-// function set_hindi($hin){
-//     $this ->hindi=$hin;
-
-// } 
-// function get_english(){
-//     return $this ->english;
-
-// }
-// function set_english($eng){
-//     $this ->english=$eng;
-// }
-// function get_maths(){
-//     return $this->maths;
-// }
-// function set_maths($math){
-//     $this->maths=$math;
-// }
-// function get_physics(){
-//     return $this-> physics;
-
-// }
-// function set_physics($phy){
-//    $this ->physics = $phy;
-
-// }
-// function get_chemistry(){
-//     return $this ->chemistry;
-// }
-// function set_chemistry($che){
-//      $this ->chemistry=$che;
-// }
+public function resultStatus(){
+    $fail = false;
+    $fail_sub_marks = 0;
+    $total_fail_sub = 0;
+    
+    $subjects = ['hindi', 'english', 'maths', 'physics', 'chemistry'];
+    
+    foreach ($subjects as $subject) {
+        if ($this->getSubjectMark($subject) < 33) {
+            $fail = true;
+            $total_fail_sub++;
+            $fail_sub_marks = $this->getSubjectMark($subject);
+        }
+    }
+    $result_status = ""; 
+    
+    if ($fail) {
+        if ($total_fail_sub == 1 && $fail_sub_marks >= 25) {
+            $result_status = "PASS WITH GRACE";
+          
+        } else {
+            $result_status = "FAIL";
+            
+        }
+    } else {
+        $result_status = "PASS";
+     
+    }
+    return $result_status;
+}
+public function getTotalMarks(){
+  
+        return $this ->getSubjectMark("hindi")+  $this->getSubjectMark("english")+  $this->getSubjectMark("maths") +  $this->getSubjectMark("physics")+ $this->getSubjectMark("chemistry");
+       
+    } 
+    
+    public function getPercentage(){
+        return ($this->getTotalMarks() / 500) * 100;
+    }
 }
 

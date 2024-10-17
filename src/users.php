@@ -7,6 +7,7 @@
     }
     include "header.php"; 
     require_once("controller/user_controller.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,7 @@
     <title>User Details</title>
 </head>
 <body>
+<?php include "admin_page.php";?>
 <div class="breadcrumb">
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
@@ -32,20 +34,32 @@
             echo "<table>";
             echo "<tr><th>USER ID</th><th>FIRST NAME</th><th>LAST NAME</th><th>EMAIL</th><th>PHONE NO</th><th>ACTION</th></tr>";
             foreach ($users as $user) {
+
                 $userid=$user->get_user_id();
                 $fname= $user->get_first_name();
                 $lname= $user->get_last_name();
                 $mail= $user->get_email();
                 $phone_no=$user->get_phone_no();
-                echo "<tr>";
-                echo "<td>{$userid}</td>";
-                echo "<td>{$fname}</td>";
-                echo "<td>{$lname}</td>";
-                echo "<td>{$mail}</td>";
-                echo "<td>{$phone_no}</td>";
-                echo "<td><a href='edit_user.php?user_id={$userid}'>EDIT</a> <a href='delete.php?user_id={$userid}'>DELETE</a></td>";
-                echo "</tr>";
+                $admin=$user->get_admin();
+
+
+            echo "<tr>";
+            if($admin==1){
+                    
+                echo "<td>{$userid}.(Admin)</td>";
             }
+            else{
+          
+            echo "<td>{$userid}</td>";
+          
+        }
+            echo "<td>{$fname}</td>";
+            echo "<td>{$lname}</td>";
+            echo "<td>{$mail}</td>";
+            echo "<td>{$phone_no}</td>";
+            echo "<td><a href='edit_user.php?user_id={$userid}'>EDIT</a> <a href='delete.php?user_id={$userid}'>DELETE</a></td>";
+            echo "</tr>";
+        }
             echo "</table>";
         } else {
             echo "<p>No results available.</p>";

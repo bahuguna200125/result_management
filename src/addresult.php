@@ -1,5 +1,7 @@
 <?php
- require "controller/user_controller.php";?>
+ require "controller/user_controller.php";
+  include("header.php")
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,8 @@
     <link rel="stylesheet" href="header.css"/>
 </head>
 <body>
-<?php include("header.php")?>
+<?php include "admin_page.php";?>
+
 <div class="breadcrumb">
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>

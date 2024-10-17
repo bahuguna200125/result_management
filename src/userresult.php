@@ -1,6 +1,6 @@
 
 <?php 
-function showresult($user_id ,$conn){
+function showresult($user_id ){
     $controller= new UserController();
     $user_result = $controller->get_user_result_by_user_id($user_id);
     if ($user_result){
@@ -76,33 +76,15 @@ echo $chemistry;
 <td>TOTAL MARKS</td>
 <td>500</td>
 <td> <b><?php
-
- function totalmarks($user_result){
-    return $user_result->getSubjectMark("hindi")+  $user_result->getSubjectMark("english")+  $user_result->getSubjectMark("maths") +  $user_result->getSubjectMark("physics")+ $user_result->getSubjectMark("chemistry");
-   
-  }
- 
-$total=totalmarks($user_result);
+$total= $user_result->getTotalMarks();
 echo $total;
-
-
-
-
-
-
  ?></b></td>
 <tr>
-
     <td id="per" colspan="2">PERCENTAGE</td>
-
-    
     <td><b>
 <?php
-     function percentage($totalmarks) {
-        return ($totalmarks / 500) * 100;
-    }
-
-     $percent = percentage($total);
+   
+     $percent = $user_result->getPercentage();
      echo $percent;
 
 
@@ -113,33 +95,8 @@ echo $total;
 <td id="per" colspan="2">STATUS</td>
     <td>
 <?php
-$fail = false;
-$fail_sub_marks = 0;
-$total_fail_sub = 0;
-
-$subjects = ['hindi', 'english', 'maths', 'physics', 'chemistry'];
-
-foreach ($subjects as $subject) {
-    if ($user_result->getSubjectMark($subject) < 33) {
-        $fail = true;
-        $total_fail_sub++;
-        $fail_sub_marks = $user_result->getSubjectMark($subject);
-    }
-}
-$result_status = ""; 
-
-if ($fail) {
-    if ($total_fail_sub == 1 && $fail_sub_marks >= 25) {
-        $result_status = "PASS WITH GRACE";
-        echo $result_status;
-    } else {
-        $result_status = "FAIL";
-        echo $result_status;
-    }
-} else {
-    $result_status = "PASS";
-    echo $result_status;
-}
+  $result_status= $user_result->resultStatus();
+  echo $result_status;
 ?>
 </td>
 </tr>
@@ -155,8 +112,6 @@ if ($fail) {
   
 ?></b><br></td> 
 </tr> 
-
-
                             </td>
                         </tr>
                     </table>

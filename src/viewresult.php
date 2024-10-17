@@ -1,6 +1,6 @@
 <?php require_once("controller/user_controller.php");?>
 <?php include "header.php"; ?>
-<?php require"userresult.php"?>;
+<?php require "userresult.php";?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,7 @@
    <link rel="stylesheet" href="manageresult.css">
 </head>
 <body>
+<?php include "admin_page.php";?>
 <div class="breadcrumb">
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>

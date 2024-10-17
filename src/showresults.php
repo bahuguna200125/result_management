@@ -17,6 +17,7 @@
     <title> Show User Results </title>
 </head>
 <body>
+<?php include "admin_page.php";?>
 <div class="container">
     <div class="breadcrumb">
         <ul class="breadcrumb">

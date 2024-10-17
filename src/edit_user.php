@@ -10,6 +10,7 @@ require "controller/user_controller.php";?>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+<?php include "admin_page.php";?>
 <div class="breadcrumb">
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a></li>
