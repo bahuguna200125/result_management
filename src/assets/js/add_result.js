@@ -1,5 +1,4 @@
 function validateResultForm() { 
-    // event.preventDefault();
     var validfrom=true;
     alert("THE RESULT WAS ADDED"+document.getElementById("hin").value+ document.getElementById("eng").value+document.getElementById("math").value+document.getElementById("phy").value+document.getElementById("che").value) ;   
        

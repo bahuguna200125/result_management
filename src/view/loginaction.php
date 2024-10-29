@@ -1,11 +1,11 @@
-<?php require_once("controller/user_controller.php");?>
+<?php require_once("../controller/user_controller.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel ="stylesheet" href="actionstyle.css"/>
+  <link rel ="stylesheet" href="/result-management/src/assets/css/actionstyle.css"/>
 
 
 </head>
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['last_name'] = $user->get_last_name(); 
         $_SESSION['admin']=$user->get_admin();
 
-        header("Location: index.php");
+        header("Location: /result-management/src/index.php");
         exit();
     } else {
         echo "<div class='message-box error'>Invalid email or password.</div>";

@@ -1,4 +1,4 @@
-<?php require "controller/user_controller.php";?>
+<?php require "../controller/user_controller.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +11,14 @@
   <?php
   $userid=   $_GET ['user_id'];
 
-$controller = new UserController();
- $controller-> delete_user_details ($userid);
+
   
  
+  $controller = new UserController();
+  $controller-> delete_user_result ($userid);
 
 
- header("location:users.php");
+ header("location:showresults.php");
 
   ?>
 

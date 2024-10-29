@@ -1,4 +1,4 @@
- <form method="post" action="resultaction.php" id="addresult" onsubmit="return validateResultForm()">
+<form method="post" action="resultaction.php" id="addresult" onsubmit="return validateResultForm()">
     <div id="result">
     <table>
         <tr>

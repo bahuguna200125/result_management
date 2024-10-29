@@ -1,4 +1,4 @@
-<?php require_once("controller/user_controller.php");?>
+<?php require_once("../controller/user_controller.php");?>
 <?php include "header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="manageresult.css">
+    <link rel="stylesheet" href="/result-management/src/assets/css/manageresult.css">
 </head>
 <body>
 <div class="breadcrumb">
 <ul class="breadcrumb">
-    <li><a href="index.php">Home</a></li>
+    <li><a href="/result-management/src/index.php">Home</a></li>
     <li><a href="addresult.php">Add Result</a></li>
     <li><a href="resultaction.php">Added Result</a></li>
 </ul>

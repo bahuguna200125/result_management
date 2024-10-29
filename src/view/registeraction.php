@@ -1,4 +1,4 @@
-<?php require_once("controller/user_controller.php");
+<?php require_once("../controller/user_controller.php");
 include("header.php")?>
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ include("header.php")?>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel ="stylesheet" href="actionstyle.css"/>
+  <link rel ="stylesheet" href="/result-management/src/assets/css/actionstyle.css"/>
 </head>
 <body>
   <?php 

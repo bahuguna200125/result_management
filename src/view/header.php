@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="/result-management/src/assets/css/header.css">
 </head>
 <body>
 <?php
@@ -18,7 +18,7 @@ else {
 ?>
 <div class="header">
         <div id="home">
-            <a href='index.php'>HOME</a>
+            <a href='/result-management/src/index.php'>HOME</a>
         </div>
 
         <?php if (!$user_logged_in) { ?>

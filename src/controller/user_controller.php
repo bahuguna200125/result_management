@@ -1,5 +1,5 @@
 <?php 
-require ("/var/www/html/result-management/src/connection.php");
+require ("/var/www/html/result-management/src/view/connection.php");
 require "/var/www/html/result-management/src/model/user_result.php";
 class UserController{
     private $connection;
