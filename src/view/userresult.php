@@ -12,7 +12,7 @@ function showresult($user_id ){
        $maths = $user_result->getSubjectMark("maths"); 
        $physics = $user_result->getSubjectMark("physics");
        $chemistry = $user_result->getSubjectMark("chemistry");
-
+     
 
  
         echo "<h2>Your Result:</h2>";
@@ -115,9 +115,23 @@ echo $total;
 <tr>
 <td></td>
 <td>ACTION</td>
-<td><b>
-<a href='view/save_excel.php?user_id=<?=$user_id?>'>Download</a>
-  
+
+<td><b></b>
+
+<?php
+
+if (isset($_SESSION['admin'])){
+    $admin=$_SESSION['admin'];
+    if($admin!=1) {?>
+    
+     <a href='view/save_excel.php?user_id=<?=$user_id?>'>Download</a>;
+
+ <?php   }
+    
+  else {?>
+    <a href='save_excel.php?user_id=<?=$user_id?>'>Download</a>
+ <?php }
+}?>
   
 </b><br></td> 
 </tr> 
