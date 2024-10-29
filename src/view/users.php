@@ -24,6 +24,7 @@
             <li><a href="/result-management/src/index.php">Home</a></li>
             <li><a href="users.php">Users</a></li>
         </ul>
+       
     </div>
     <div class="users">
     <?php
@@ -58,9 +59,13 @@
             echo "<td>{$mail}</td>";
             echo "<td>{$phone_no}</td>";
             echo "<td><a href='edit_user.php?user_id={$userid}'>EDIT</a> <a href='delete.php?user_id={$userid}'>DELETE</a></td>";
+           
             echo "</tr>";
         }
+        
             echo "</table>";
+            echo "<a href='save_users.php'>Download</a>"; 
+          
         } else {
             echo "<p>No results available.</p>";
         }

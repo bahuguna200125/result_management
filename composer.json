@@ -11,5 +11,7 @@
             "email": "amitbahuguna55@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.3"
+    }
 }

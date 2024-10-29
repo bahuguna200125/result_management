@@ -112,6 +112,15 @@ echo $total;
   
 ?></b><br></td> 
 </tr> 
+<tr>
+<td></td>
+<td>ACTION</td>
+<td><b>
+<a href='view/save_excel.php?user_id=<?=$user_id?>'>Download</a>
+  
+  
+</b><br></td> 
+</tr> 
                             </td>
                         </tr>
                     </table>
