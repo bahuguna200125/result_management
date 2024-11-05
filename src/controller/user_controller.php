@@ -1,6 +1,6 @@
 <?php 
-require ("/var/www/html/result-management/src/view/connection.php");
-require "/var/www/html/result-management/src/model/user_result.php";
+require __DIR__. "/../view/connection.php";
+require  __DIR__. "/../model/user_result.php";
 class UserController{
     private $connection;
     

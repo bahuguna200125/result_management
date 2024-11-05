@@ -7,13 +7,13 @@ require "../controller/user_controller.php";?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="/result-management/src/assets/css/style.css"/>
+    <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
 <?php include "admin_page.php";?>
 <div class="breadcrumb">
         <ul class="breadcrumb">
-            <li><a href="/result-management/src/index.php">Home</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li><a href="users.php">Users</a></li>
             <li><a href="edit_user.php">Edit User</a></li>
         </ul>

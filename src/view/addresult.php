@@ -1,5 +1,5 @@
 <?php
- require "../controller/user_controller.php";
+ require __DIR__."/../controller/user_controller.php";
   include("header.php")
  ?>
 <!DOCTYPE html>
@@ -8,15 +8,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/result-management/src/assets/css/addresult.css"/>
-    <link rel="stylesheet" href="/result-management/src/assets/css/header.css"/>
+    <link rel="stylesheet" href="../assets/css/addresult.css"/>
+    <link rel="stylesheet" href="../assets/css/header.css"/>
 </head>
 <body>
 <?php include "admin_page.php";?>
 
 <div class="breadcrumb">
         <ul class="breadcrumb">
-            <li><a href="/result-management/src/index.php">Home</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li><a href="addresult.php">Add Result</a></li>
         </ul>
     </div>
@@ -55,6 +55,6 @@
                 </div>
 <?php } ?>
 </div>
-<script src="/result-management/src/assets/js/add_result.js"></script>
+<script src="../assets/js/add_result.js"></script>
 </body>
 </html>

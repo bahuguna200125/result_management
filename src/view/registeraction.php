@@ -7,7 +7,7 @@ include("header.php")?>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel ="stylesheet" href="/result-management/src/assets/css/actionstyle.css"/>
+  <link rel ="stylesheet" href="../assets/css/actionstyle.css"/>
 </head>
 <body>
   <?php 
@@ -31,7 +31,6 @@ if ($_POST["lname"]=="") {
  ?><br>
 <?php 
 $mail=$_POST["mail"];
-// echo $mail;
 ?><br>
 <?php
 if ($_POST["mail"]=="") {
@@ -41,7 +40,6 @@ if ($_POST["mail"]=="") {
  ?><br>
  <?php
  $mobile_no= $_POST["phone"];
-// echo $mobile_no;
 ?><br>
 <?php
 if ($_POST["phone"]=="") {
@@ -51,7 +49,6 @@ if ($_POST["phone"]=="") {
  ?><br>
 <?php 
 $pass= $_POST["cpass"];
-// echo $pass;
 ?><br>
 <?php
 if ($pass=="") {
@@ -60,7 +57,6 @@ if ($pass=="") {
 ?><br>
 <?php 
 $confirmpass=$_POST["conpass"];
-// echo $confirmpass;
 ?><br>
 <?php
 if ($confirmpass=="") {

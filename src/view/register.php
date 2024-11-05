@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel ="stylesheet" href="/result-management/src/assets/css/style.css"/>
+    <link rel ="stylesheet" href="../assets/css/style.css"/>
     
 </head>
 <body>
@@ -37,6 +37,6 @@
        <div id="samepass_info"></div>
        <input type="submit"  id="submit"  name="submit" value="submit">
     </form> 
-    <script src="/result-management/src/assets/js/register.js"></script>
+    <script src="../assets/js/register.js"></script>
 </body>
 </html>

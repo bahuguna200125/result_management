@@ -10,7 +10,7 @@
 session_start();
 session_destroy();
 echo "YOU ARE SUCCESSFULLY LOGGED OUT <a href='login.php'>LOGIN<a/> or <a href='register.php'>REGISTER<a/> ";
-header ("location:/result-management/src/index.php");
+header ("location: ../index.php");
 exit;
 ?>
  </body>

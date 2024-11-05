@@ -1,6 +1,6 @@
 <?php 
-require "/var/www/html/result-management/src/model/user.php";
-require "/var/www/html/result-management/src/model/subjects.php";
+require "user.php";
+require "subjects.php";
 
 class UserResult {
     private $id;

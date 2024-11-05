@@ -10,7 +10,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="/result-management/src/assets/css/manageuser.css">
+<link rel="stylesheet" href="../assets/css/manageuser.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
 <div class="container">
     <div class="breadcrumb">
         <ul class="breadcrumb">
-            <li><a href="/result-management/src/index.php">Home</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li><a href="showresults.php">Show Result</a></li>
         </ul>
     </div>
