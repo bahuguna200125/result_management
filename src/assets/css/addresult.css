@@ -209,7 +209,9 @@ button:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    
+    margin-top: 15%;
+    margin-left: 30%;
+    padding: 30px;
 }
 
 /* For Add Result Section */
@@ -217,6 +219,7 @@ button:hover {
     font-size: 22px;
     color: #2c3e50;
     margin-bottom: 10px;
+    margin-right: 15px;
 }
 
 /* For Edit Result Section */
