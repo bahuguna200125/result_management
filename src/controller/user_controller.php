@@ -149,7 +149,7 @@ $marks=[];
     $physics=$marks["physics"];
     $chemistry=$marks["chemistry"];
 
-    $sql = "INSERT INTO  result_management.user_result (user_id, hindi, english, maths, physics, chemistry ) 
+    $sql = "INSERT INTO user_result (user_id, hindi, english, maths, physics, chemistry ) 
     VALUES ( '{$user_id}', '{$hindi}', '{$english}', '{$maths}', '{$physics}', '{$chemistry}')";
     $this -> connection->query($sql);
    
@@ -170,7 +170,7 @@ function update_user_results($subjects,$user_id){
     $physics=$marks["physics"];
     $chemistry=$marks["chemistry"];
 
-    $sql = "UPDATE result_management.user_result  
+    $sql = "UPDATE user_result  
     SET hindi='{$hindi}', english='{$english}', maths='{$maths}', physics='{$physics}', 
     chemistry='{$chemistry}' WHERE user_id =$user_id";
    
@@ -202,7 +202,7 @@ function edit_user($user){
     $mobile_no=$user->get_phone_no();
     $pass=$user->get_password();
     
-    $sql = "UPDATE result_management.user
+    $sql = "UPDATE user
     SET fname='{$firstname}', lname='{$lastname}', mail='{$mail}', phone_no='{$mobile_no}', 
     password ='{$pass}' WHERE user_id =$user_id";
     
